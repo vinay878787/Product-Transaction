@@ -1,4 +1,5 @@
 const express = require("express");
+const db = require("./db/db");
 const app = express();
 
 app.get("/health", (req, res) => {
@@ -7,6 +8,13 @@ app.get("/health", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || "localhost";
-app.listen(PORT, () => { 
-  console.log(`server connected on http://${HOST}:${PORT}`);
-});
+
+db()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`server connected on http://${HOST}:${PORT}`);
+    });
+  })
+  .catch((e) => {
+    console.log("database not connected :", e);
+  });
