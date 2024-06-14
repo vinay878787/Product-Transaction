@@ -1,0 +1,14 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+
+# Other possible files to ignore
+.DS_Store
+*.log
+npm-debug.log*
