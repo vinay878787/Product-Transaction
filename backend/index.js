@@ -6,7 +6,7 @@ const errorMiddleware = require("./middlewares/error");
 const app = express();
 
 var corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: ["https://product-transaction-five.vercel.app/","http://localhost:5173"],
   optionsSuccessStatus: 200 
 }
 app.use(cors(corsOptions));
