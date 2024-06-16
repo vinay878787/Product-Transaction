@@ -1,11 +1,19 @@
 const express = require("express");
 const db = require("./db/db");
+const transaction = require("./routes/transaction");
+const errorMiddleware = require("./middlewares/error");
 const app = express();
 
-app.get("/health", (req, res) => {
+app.use("/api/v1/", transaction);
+app.get("/health", (req, res, next) => {
   res.json({ message: "server is healthy" });
+  next();
 });
-
+app.use("/*", (req, res, next) => {
+  res.status(404).json({ message: "page not found" });
+  next();
+});
+app.use(errorMiddleware);
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || "localhost";
 
