@@ -237,7 +237,6 @@ const getPieChart = async (req, res, next) => {
       return acc;
     }, {});
 
-    // Format the result for the pie chart
     const result = Object.entries(categoryCount).map(([category, count]) => ({
       category,
       count,
@@ -260,7 +259,6 @@ const getCombinedData = async (req, res, next) => {
   }
 
   try {
-    // Define the endpoints to call
     const endpoints = [
       `${baseURL}/api/v1/sales?month=${month}`,
       `${baseURL}/api/v1/barChart?month=${month}`,

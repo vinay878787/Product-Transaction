@@ -1,9 +1,15 @@
 const express = require("express");
 const db = require("./db/db");
+const cors = require("cors");
 const transaction = require("./routes/transaction");
 const errorMiddleware = require("./middlewares/error");
 const app = express();
 
+var corsOptions = {
+  origin: 'http://localhost:5173',
+  optionsSuccessStatus: 200 
+}
+app.use(cors(corsOptions));
 app.use("/api/v1/", transaction);
 app.get("/health", (req, res, next) => {
   res.json({ message: "server is healthy" });

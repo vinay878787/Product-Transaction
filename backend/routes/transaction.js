@@ -7,6 +7,6 @@ router.get("/fetch", transaction.fetchDataBySearch);
 router.get("/sales", transaction.getStatistics);
 router.get("/barChart", transaction.getBarChart);
 router.get("/pieChart", transaction.getPieChart);
-router.get("/data", transaction.getCombinedData);
+router.get("/combinedData", transaction.getCombinedData);
 
 module.exports = router;
